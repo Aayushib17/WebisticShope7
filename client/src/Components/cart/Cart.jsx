@@ -4,7 +4,7 @@ import { Box, Typography, Button, Grid, styled } from '@mui/material';
 import { useParams } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux';
-// import { addToCart, removeFromCart } from '../../redux/actions/cartActions';
+import { addToCart, removeFromCart } from '../../redux/actions/cartAction';
 
 import TotalView from './TotalView';
 import EmptyCart from './EmptyCart';
@@ -53,27 +53,27 @@ const StyledButton = styled(Button)`
 const Cart = () => {
     const cartDetails = useSelector(state => state.cart);
     const { cartItems } = cartDetails;
-    // const { id } = useParams();
+    const { id } = useParams();
 
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
     
-    // useEffect(() => {
-    //     if(cartItems && id !== cartItems.id)   
-    //         dispatch(addToCart(id));
-    // }, [dispatch, cartItems, id]);
+    useEffect(() => {
+        if(cartItems && id !== cartItems.id)   
+            dispatch(addToCart(id));
+    }, [dispatch, cartItems, id]);
 
-    // const removeItemFromCart = (id) => {
-    //     dispatch(removeFromCart(id));
-    // }
+    const removeItemFromCart = (id) => {
+        dispatch(removeFromCart(id));
+    }
 
-    // const buyNow = async () => {
-    //     let response = await payUsingPaytm({ amount: 500, email: 'kunaltyagi@gmail.com'});
-    //     var information = {
-    //         action: 'https://securegw-stage.paytm.in/order/process',
-    //         params: response    
-    //     }
-    //     post(information);
-    // }
+    const buyNow = async () => {
+        // let response = await payUsingPaytm({ amount: 500, email: 'kunaltyagi@gmail.com'});
+        var information = {
+            action: 'https://securegw-stage.paytm.in/order/process',
+            // params: response    
+        }
+        // post(information);
+    }
 
     return (
         <>
@@ -83,13 +83,13 @@ const Cart = () => {
                     <Header>
                         <Typography style={{fontWeight: 600, fontSize: 18}}>My Cart ({cartItems?.length})</Typography>
                     </Header>
-                        {/* {   cartItems.map(item => (
+                        {   cartItems.map(item => (
                                 <CartItem item={item} removeItemFromCart={removeItemFromCart}/>
                             ))
                         } */}
-                    {/* <BottomWrapper>
+                    <BottomWrapper>
                         <StyledButton onClick={() => buyNow()} variant="contained">Place Order</StyledButton>
-                    </BottomWrapper> */}
+                    </BottomWrapper>
                 </LeftComponent>
                 <Grid item lg={3} md={3} sm={12} xs={12}>
                     <TotalView cartItems={cartItems} />

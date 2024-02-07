@@ -8,7 +8,7 @@ import { LoginContext } from '../../context/ContextProvider';
 import { useSelector } from 'react-redux';
 
 import Profile from './Profile';
-import LoginDialog from '../Login/LoginDialog';
+import LoginDialog from '../login/LoginDialog';
 
 const Container = styled(Link)(({ theme }) => ({
     display: 'flex',

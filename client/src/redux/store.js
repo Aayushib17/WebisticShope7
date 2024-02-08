@@ -3,12 +3,12 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import { cartReducer } from './reducers/cartReducer';
-// import { getProductDetailsReducer, getProductReducer } from './reducers/productReducer';
+import { getProductDetailsReducer, getProductsReducer } from './reducers/productReducer';
 
 const reducer = combineReducers({
     cart: cartReducer,
-    // getProducts: getProductReducer,
-    // getProductDetails: getProductDetailsReducer
+    getProducts: getProductsReducer,
+    getProductDetails: getProductDetailsReducer
 })
 
 
@@ -18,5 +18,8 @@ const store = createStore(
     reducer, 
     composeWithDevTools(applyMiddleware(...middleware))
 );
+
+
+
 
 export default store;

@@ -1,7 +1,7 @@
 
 import { Card, Box, Typography, Button, styled } from '@mui/material';
 
-// import { addEllipsis } from '../../utils/util';
+import { addEllipsis } from '../../utils/util';
 import GroupButton from './GroupButton';
 
 const Component = styled(Card)`
@@ -50,7 +50,7 @@ const CartItem = ({ item, removeItemFromCart }) => {
                 <GroupButton />
             </LeftComponent>
             <Box style={{ margin: 20 }}>
-                {/* <Typography>{addEllipsis(item.title.longTitle)}</Typography> */}
+                <Typography>{addEllipsis(item.title.longTitle)}</Typography>
                 <SmallText>Seller:RetailNet
                     <span><img src={fassured} style={{ width: 50, marginLeft: 10 }} /></span>
                 </SmallText>
